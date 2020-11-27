@@ -64,3 +64,14 @@ variable "publish_val" {
   default = "External"
 }
 
+variable "aws_access_key_id" {
+  type = string
+  description = "value for access_key_id"
+  default = ""
+}
+
+variable "aws_secret_access_key" {
+  type = string
+  description = "value for secret_access_key"
+  default = ""
+}

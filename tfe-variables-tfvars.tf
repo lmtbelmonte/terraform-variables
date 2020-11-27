@@ -33,6 +33,10 @@ provider "tfe" {
   version  = "~> 0.22.0"
 }
 
+# En este caso ya tengo organizacion y el workspace 
+# creada y no me hace falta.
+# solo necesito el workspace_id existente
+
 #resource "tfe_organization" "test" {
 #  name  = "lmtbelmonte"
 #  email = "lmtbelmonte@cloud-bigdata.net"
@@ -49,7 +53,7 @@ resource "tfe_variable" "clusterid" {
   category     = "terraform"
   sensitive    = "false"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Id del cluster OCP "
 }
 
 resource "tfe_variable" "clustername" {
@@ -58,7 +62,7 @@ resource "tfe_variable" "clustername" {
   category     = "terraform"
   sensitive    = "false"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Nombre del cluster OCP"
 }
 
 resource "tfe_variable" "basedomain" {
@@ -67,7 +71,7 @@ resource "tfe_variable" "basedomain" {
   category     = "terraform"
   sensitive    = "false"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Dominio del cluster OCP"
 }
 
 resource "tfe_variable" "pullsecret" {
@@ -76,7 +80,7 @@ resource "tfe_variable" "pullsecret" {
   category     = "terraform"
   sensitive    = "false"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Pull secret"
 }
 
 resource "tfe_variable" "installerurl" {
@@ -85,43 +89,43 @@ resource "tfe_variable" "installerurl" {
   category     = "terraform"
   sensitive    = "false"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Url del openshift installer"
 }
 
 resource "tfe_variable" "accesskey" {
   key          = "aws_access_key_id"
-  value        = "AKIAWTISLFCD63GHO5UP"
+  value        = var.aws_access_key_id
   category     = "terraform"
   sensitive    = "true"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Variable de terraform para aws_access_key_id "
 }
 
 resource "tfe_variable" "accesskey-env" {
   key          = "AWS_ACCESS_KEY_ID"
-  value        = "AKIAWTISLFCD63GHO5UP"
+  value        = var.aws_access_key_id
   category     = "env"
   sensitive    = "true"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Variable de Entorno para aws_access_key_id"
 }
 
 resource "tfe_variable" "secretaccesskey" {
   key          = "aws_secret_access_key"
-  value        = "gfEaayWxQpqEEN8+Y0MiyR0eKDt0cBHxpPXUfqZ4"
+  value        = var.aws_secret_access_key
   category     = "terraform"
   sensitive    = "true"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Variable de terraform para aws_secret_access_key"
 }
 
 resource "tfe_variable" "secretaccesskey-env" {
   key          = "AWS_SECRET_ACCESS_KEY"
-  value        = "gfEaayWxQpqEEN8+Y0MiyR0eKDt0cBHxpPXUfqZ4"
+  value        = var.aws_secret_access_key
   category     = "env"
   sensitive    = "true"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Variable de Entorno para aws_secret_access_key"
 }
 
 
@@ -161,7 +165,7 @@ resource "tfe_variable" "region" {
   category     = "terraform"
   sensitive    = "false"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "la region AWS"
 }
 
 resource "tfe_variable" "publish_strategy" {
@@ -170,5 +174,5 @@ resource "tfe_variable" "publish_strategy" {
   category     = "terraform"
   sensitive    = "false"
   workspace_id = var.workspace_id
-  description  = "a useful description"
+  description  = "Tipo de despliegue si es External, Internal o airgapped"
 }
