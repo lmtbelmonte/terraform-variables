@@ -35,7 +35,7 @@ provider "tfe" {
 
 # En este caso ya tengo organizacion y el workspace 
 # creada y no me hace falta.
-# solo necesito el workspace_id existente
+# solo necesito el workspace_id existente y el token personal generado 
 
 #resource "tfe_organization" "test" {
 #  name  = "lmtbelmonte"
