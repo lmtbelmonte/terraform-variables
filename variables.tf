@@ -75,3 +75,8 @@ variable "aws_secret_access_key" {
   description = "value for secret_access_key"
   default = ""
 }
+
+variable "aws_extratags_val" {
+  type = map(string)
+  description = "value for k8s tags"
+}

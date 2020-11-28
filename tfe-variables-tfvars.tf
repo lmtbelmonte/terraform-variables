@@ -138,15 +138,15 @@ resource "tfe_variable" "awsami" {
   description  = "a useful description"
 }
 
-#resource "tfe_variable" "extratags" {
-#  key          = "aws_extra_tags"
-#  value        = {kubernetes.io/cluster/ocp4-9n2nn = "owned", owner = "admin"}
-#  category     = "terraform"
-#  sensitive    = "true"
-#  hcl          = "true"
-#  workspace_id = var.workspace_id
-#  description  = "a useful description"
-#}
+resource "tfe_variable" "extratags" {
+  key          = "aws_extra_tags"
+  value        = var.aws_extratags_val
+  category     = "terraform"
+  sensitive    = "true"
+  hcl          = "true"
+  workspace_id = var.workspace_id
+  description  = "a useful description"
+}
 
 #resource "tfe_variable" "awsazs" {
 #  key          = "aws_azs"

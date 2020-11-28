@@ -2,4 +2,5 @@
 terraform.tfvars
 terraform.tfstate*
 kube*
-aws_config*
+terraform aws_config*
+vault*
